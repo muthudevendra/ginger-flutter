@@ -66,7 +66,7 @@ class _PopularScreenState extends State<PopularScreen> {
       ),
       body: Center(
         child: FutureBuilder<List>(
-          future: !isOffline ? _animeRepository.fetchAnimeList() : null,
+          future: !isOffline ? _animeRepository.fetchPopularAnimeList() : null,
           builder: (context, snapshot) {
             if (snapshot.hasData) {          
               return ListView(
