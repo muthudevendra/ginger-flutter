@@ -62,6 +62,7 @@ class _PopularScreenState extends State<PopularScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Popular'),
+        centerTitle: true,
         backgroundColor: Colors.orange,
       ),
       body: Center(

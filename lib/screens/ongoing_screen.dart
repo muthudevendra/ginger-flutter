@@ -62,6 +62,7 @@ class _OngoingScreenState extends State<OngoingScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Ongoing'),
+        centerTitle: true,
         backgroundColor: Colors.orange,
       ),
       body: Center(

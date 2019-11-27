@@ -16,7 +16,7 @@ class UpcomingScreen extends StatefulWidget {
 class _UpcomingScreenState extends State<UpcomingScreen> {
   StreamSubscription _connectionChangeStream;
   bool isOffline = false;
-
+ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   initState() {
     super.initState();
@@ -61,9 +61,41 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: new Drawer(
+          child: ListView(
+    // Important: Remove any padding from the ListView.
+    padding: EdgeInsets.zero,
+    children: <Widget>[
+      DrawerHeader(
+        child: Text('Drawer Header'),
+        decoration: BoxDecoration(
+          color: Colors.blue,
+        ),
+      ),
+      ListTile(
+        title: Text('Item 1'),
+        onTap: () {
+          // Update the state of the app.
+          // ...
+        },
+      ),
+      ListTile(
+        title: Text('Item 2'),
+        onTap: () {
+          // Update the state of the app.
+          // ...
+        },
+      ),
+    ],
+  ),
+      ),
       appBar: AppBar(
         title: Text('Upcoming'),
+        centerTitle: true,
         backgroundColor: Colors.orange,
+         leading: new IconButton(icon: new Icon(Icons.settings),
+            onPressed: () => _scaffoldKey.currentState.openDrawer()),
       ),
       body: Center(
         child: FutureBuilder<List>(
@@ -77,8 +109,8 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                       item['image_url'],
                       item['title'],
                       item['rank'],
-                      item['episodes'],
-                      item['score'],
+                      0.0,
+                      0.0,
                       item['type']
                     ),
                 ],
